@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/functions';
 import 'firebase/firestore';
 
 if (!firebase.apps.length) {
@@ -9,10 +10,11 @@ if (!firebase.apps.length) {
     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
   });
 }
-
 // Auth exports
 export const auth = firebase.auth();
 export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 // Firestore exports
-export const firestore = firebase.firestore();
+export const db = firebase.firestore();
+
+export default firebase;
