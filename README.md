@@ -13,6 +13,7 @@ Npm run dev
 
 ## Packages
 
+- Next.Js
 - Firebase
 - Firebase-Extensions(Run Subscription Payments with Stripe)
 - js-cookie
