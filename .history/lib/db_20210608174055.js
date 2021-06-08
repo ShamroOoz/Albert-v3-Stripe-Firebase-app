@@ -17,7 +17,7 @@ export async function createCheckoutSession(uid) {
     .collection('checkout_sessions')
     .add({
       price: 'price_1IzS2rLMgvU1cp6VANo43mYu',
-      allow_promotion_codes: false,
+      allow_promotion_codes: true,
       success_url: window.location.origin,
       cancel_url: window.location.origin
     });
@@ -35,7 +35,7 @@ export async function createCheckoutSession(uid) {
 
 ///
 export async function goToBillingPortal() {
-  const functionRef = app()
+  const functionRef = app
     .functions('us-central1')
     .httpsCallable('ext-firestore-stripe-subscriptions-createPortalLink');
 

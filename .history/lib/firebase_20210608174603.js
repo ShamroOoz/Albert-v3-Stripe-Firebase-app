@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/functions';
 import 'firebase/firestore';
@@ -23,9 +23,8 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 // Firestore exports
 export const firestore = firebase.firestore();
 
-export const getStripeRole = async () => {
+export const getCustomClaimRole = async () => {
   await firebase.auth().currentUser.getIdToken(true);
   const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
-
   return decodedToken.claims.stripeRole;
 };

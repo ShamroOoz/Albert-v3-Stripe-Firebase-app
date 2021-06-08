@@ -12,9 +12,6 @@ if (!firebase.apps.length) {
 }
 
 //app
-export function app() {
-  return firebase.app();
-}
 
 // Auth exports
 export const auth = firebase.auth();
@@ -23,9 +20,8 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 // Firestore exports
 export const firestore = firebase.firestore();
 
-export const getStripeRole = async () => {
+export const getCustomClaimRole = async () => {
   await firebase.auth().currentUser.getIdToken(true);
   const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
-
   return decodedToken.claims.stripeRole;
 };

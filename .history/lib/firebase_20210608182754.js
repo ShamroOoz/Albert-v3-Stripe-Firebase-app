@@ -27,5 +27,5 @@ export const getStripeRole = async () => {
   await firebase.auth().currentUser.getIdToken(true);
   const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
 
-  return decodedToken.claims.stripeRole;
+  return decodedToken.claims.stripeRole || 'free';
 };
