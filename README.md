@@ -21,4 +21,4 @@ Npm run dev
 
 ## Deployment
 
-Deploy it to the cloud with [Vercel]()
+Deploy it to the cloud with [Vercel](https://albert-v3-stripe-firebase-app.vercel.app/)
