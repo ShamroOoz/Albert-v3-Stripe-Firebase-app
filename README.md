@@ -2,7 +2,7 @@
 
 This example shows how to use Firebase-Extensions(Run Subscription Payments with Stripe) to implement payment gateway.
 
-[Run Subscription Payments with Stripe](https://firebase.google.com/products/extensions/firestore-stripe-subscriptions)
+ Visit firebase extensions  ===> [Run Subscription Payments with Stripe](https://firebase.google.com/products/extensions/firestore-stripe-subscriptions)
 
 ## Available Scripts
 
