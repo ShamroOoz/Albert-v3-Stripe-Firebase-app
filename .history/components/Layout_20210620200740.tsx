@@ -25,8 +25,8 @@ const Layout: React.FC<Iprops> = ({
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description!} />
-        <meta name="keywords" content={keywords!} />
+        <meta name="description" content={description ?? ''} />
+        <meta name="keywords" content={keywords ?? ''} />
       </Head>
 
       <Header />

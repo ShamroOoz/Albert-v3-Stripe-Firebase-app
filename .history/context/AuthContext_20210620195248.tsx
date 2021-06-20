@@ -71,7 +71,7 @@ function useProvideAuth() {
 
   const signinWithGoogle = async () => {
     setLoading(true);
-    return auth.signInWithPopup(googleAuthProvider).then((response) => {
+    auth.signInWithPopup(googleAuthProvider).then((response) => {
       handleUser(response.user);
       setLoading(false);
     });
@@ -97,7 +97,7 @@ function useProvideAuth() {
       });
 
     checkoutSessionRef.onSnapshot(async (snap) => {
-      const { sessionId } = snap.data() as any | null;
+      const { sessionId } = snap.data();
       if (sessionId) {
         const stripe = await getStripe();
         stripe.redirectToCheckout({ sessionId });
@@ -129,7 +129,7 @@ function useProvideAuth() {
   };
 }
 
-export type useProvideAuthResult = ReturnType<typeof useProvideAuth>;
+type useProvideAuthResult = ReturnType<typeof useProvideAuth>;
 
 export const UserContext = createContext<useProvideAuthResult | null>(null);
 

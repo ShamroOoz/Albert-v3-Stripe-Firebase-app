@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { MenuAlt3Icon, XIcon, UserIcon } from '@heroicons/react/solid';
-import { useAuth, useProvideAuthResult } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';
 
 const Header: React.FC = (): JSX.Element => {
   const [isOpen, setisOpen] = useState(false);
   const [dropopen, setdropopen] = useState(false);
-  const { user, signOut, signinWithGoogle } = useAuth() as useProvideAuthResult;
+  const { user, signOut, signinWithGoogle } = useAuth();
 
   return (
     <div className="antialiased bg-gray-100 dark-mode:bg-gray-900">

@@ -10,7 +10,7 @@ export type PlansType = {
   features: string[];
 };
 
-const plans: Array<PlansType> = [
+const plans: PlansType[] = [
   {
     id: 1,
     name: 'BAS',

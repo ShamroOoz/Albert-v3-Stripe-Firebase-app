@@ -1,12 +1,15 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 import { PlansType } from '@/helpers/Data';
 import { useAuth, useProvideAuthResult } from '@/context/AuthContext';
 
-type Iprop = { plan: PlansType };
+type Iprop = PlansType & { key: number };
 
-const Plansportal: React.FC<Iprop> = ({ plan }: Iprop): JSX.Element => {
+const Plansportal: React.FC<Iprop> = ({ key, plan }: Iprop): JSX.Element => {
   const { createCheckoutSession, user } = useAuth() as useProvideAuthResult;
 
+  // eslint-disable-next-line no-console
+  console.log(key);
   return (
     <section className="flex flex-col w-full max-w-sm p-12 space-y-6 bg-white rounded-lg shadow-xl">
       <div className="flex-shrink-0">
@@ -26,7 +29,7 @@ const Plansportal: React.FC<Iprop> = ({ plan }: Iprop): JSX.Element => {
       </div>
 
       <ul className="flex-1 space-y-4">
-        {plan?.features.map((feature, index: number) => (
+        {plan?.features.map((feature: string[], index: number) => (
           // eslint-disable-next-line react/no-array-index-key
           <li className="flex items-start" key={index}>
             <svg
@@ -49,7 +52,6 @@ const Plansportal: React.FC<Iprop> = ({ plan }: Iprop): JSX.Element => {
 
       <div className="flex-shrink-0 pt-4">
         <button
-          type="button"
           onClick={() => createCheckoutSession(user?.uid, plan?.planId)}
           className={`inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
             plan.name === 'PLUS'

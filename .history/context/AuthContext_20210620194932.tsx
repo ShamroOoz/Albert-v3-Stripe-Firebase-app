@@ -11,6 +11,7 @@ import Router from 'next/router';
 import cookie from 'js-cookie';
 import getStripe from '@/lib/stripe';
 import { createUser } from '@/lib/db';
+import { UrlObject } from 'url';
 
 interface Props {
   children: React.ReactNode;
@@ -69,11 +70,14 @@ function useProvideAuth() {
     return () => unsubscribe();
   }, []);
 
-  const signinWithGoogle = async () => {
+  const signinWithGoogle = async (redirect: string | UrlObject) => {
     setLoading(true);
     return auth.signInWithPopup(googleAuthProvider).then((response) => {
       handleUser(response.user);
       setLoading(false);
+      if (redirect) {
+        Router.push(redirect);
+      }
     });
   };
 
@@ -97,7 +101,7 @@ function useProvideAuth() {
       });
 
     checkoutSessionRef.onSnapshot(async (snap) => {
-      const { sessionId } = snap.data() as any | null;
+      const { sessionId } = snap.data();
       if (sessionId) {
         const stripe = await getStripe();
         stripe.redirectToCheckout({ sessionId });
@@ -129,7 +133,7 @@ function useProvideAuth() {
   };
 }
 
-export type useProvideAuthResult = ReturnType<typeof useProvideAuth>;
+type useProvideAuthResult = ReturnType<typeof useProvideAuth>;
 
 export const UserContext = createContext<useProvideAuthResult | null>(null);
 

@@ -25,8 +25,8 @@ const Layout: React.FC<Iprops> = ({
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description!} />
-        <meta name="keywords" content={keywords!} />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
       </Head>
 
       <Header />
@@ -39,7 +39,7 @@ const Layout: React.FC<Iprops> = ({
 };
 
 Layout.defaultProps = {
-  title: 'Albert | e Education',
+  title: 'Albert | e Education ',
   description:
     'Albert is a digital maths teacher for children. Developed to teach maths in a smart, fun and educational way',
   keywords: 'E Education, children, study, math'
