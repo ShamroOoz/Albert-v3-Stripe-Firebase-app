@@ -5,12 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "style:all": "tsc && npm run style:lint && npm run style:prettier",
-    "style:lint": "eslint '**/*.{js,jsx,ts,tsx}'",
-    "style:prettier": "prettier --check '**/*.{js,jsx,ts,tsx}'",
-    "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-    "prepare": "husky install"
+    "start": "next start"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.1",
@@ -25,28 +20,28 @@
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^3.0.4",
     "reactfire": "^3.0.0-rc.0",
-    "stripe": "^8.156.0",
+    "stripe": "^8.153.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.2",
-    "@types/node": "^15.12.4",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
-    "eslint": "^7.29.0",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.1.4",
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "@types/react-dom": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^6.0.0",
-    "prettier": "^2.3.1",
-    "typescript": "^4.3.4"
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3"
   }
 }
