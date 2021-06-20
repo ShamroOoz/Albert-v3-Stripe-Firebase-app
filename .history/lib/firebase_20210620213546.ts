@@ -23,8 +23,9 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 // Firestore exports
 export const firestore = firebase.firestore();
 
-export const getStripeRole = async (rawUser: any) => {
-  await rawUser.getIdToken(true);
-  const decodedToken = await rawUser.getIdTokenResult();
+export const getStripeRole = async () => {
+  await firebase.auth().currentUser.getIdToken(true);
+  const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
+
   return decodedToken.claims.stripeRole || 'free';
 };

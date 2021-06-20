@@ -31,7 +31,7 @@ const formatUser = async (rawUser: {
     name: rawUser.displayName,
     provider: rawUser.providerData[0].providerId,
     photoUrl: rawUser.photoURL,
-    stripeRole: await getStripeRole(rawUser),
+    stripeRole: await getStripeRole(),
     token
   };
 };

@@ -24,7 +24,6 @@
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true // support typesystem compatibility
   },
-  "types": ["firebase"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

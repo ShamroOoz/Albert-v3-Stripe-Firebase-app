@@ -31,7 +31,7 @@ const formatUser = async (rawUser: {
     name: rawUser.displayName,
     provider: rawUser.providerData[0].providerId,
     photoUrl: rawUser.photoURL,
-    stripeRole: await getStripeRole(rawUser),
+    stripeRole: await getStripeRole(),
     token
   };
 };
@@ -65,7 +65,13 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(handleUser);
+    const unsubscribe = auth.onAuthStateChanged((rawUser) => {
+      if (rawUser) {
+        // eslint-disable-next-line no-console
+        console.log(rawUser);
+        handleUser(rawUser);
+      }
+    });
     // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);

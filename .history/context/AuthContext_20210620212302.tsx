@@ -16,7 +16,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const formatUser = async (rawUser: {
+const formatUser = async (user: {
   getIdToken: () => any;
   uid: any;
   email: any;
@@ -24,14 +24,14 @@ const formatUser = async (rawUser: {
   providerData: { providerId: any }[];
   photoURL: any;
 }) => {
-  const token = await rawUser.getIdToken();
+  const token = await user.getIdToken();
   return {
-    uid: rawUser.uid,
-    email: rawUser.email,
-    name: rawUser.displayName,
-    provider: rawUser.providerData[0].providerId,
-    photoUrl: rawUser.photoURL,
-    stripeRole: await getStripeRole(rawUser),
+    uid: user.uid,
+    email: user.email,
+    name: user.displayName,
+    provider: user.providerData[0].providerId,
+    photoUrl: user.photoURL,
+    stripeRole: await getStripeRole(),
     token
   };
 };
@@ -65,8 +65,7 @@ function useProvideAuth() {
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(handleUser);
-    // Cleanup subscription on unmount
+    const unsubscribe = auth.onIdTokenChanged(handleUser);
     return () => unsubscribe();
   }, []);
 
@@ -131,15 +130,16 @@ function useProvideAuth() {
 }
 
 export type useProvideAuthResult = ReturnType<typeof useProvideAuth>;
+
 export const UserContext = createContext<useProvideAuthResult | null>(null);
+
+export const useAuth = () => {
+  return useContext(UserContext);
+};
 
 export const ProvideAuth: React.FC<Props> = ({ children }: Props) => {
   const authData = useProvideAuth();
   return (
     <UserContext.Provider value={authData}>{children}</UserContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  return useContext(UserContext);
 };
