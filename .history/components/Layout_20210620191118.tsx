@@ -8,11 +8,12 @@ import Showcase from './Showcase';
 import Loading from './Loading';
 
 type Iprops = {
-  title?: string;
-  keywords?: string;
-  description?: string;
+  title: string;
+  keywords: string;
+  description: string;
   children: React.ReactNode;
 };
+
 const Layout: React.FC<Iprops> = ({
   title,
   keywords,
@@ -24,9 +25,18 @@ const Layout: React.FC<Iprops> = ({
   return (
     <div>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords} />
+        <title>{title ?? 'Albert | e Education'}</title>
+        <meta
+          name="description"
+          content={
+            description ??
+            'Albert is a digital maths teacher for children. Developed to teach maths in a smart, fun and educational way'
+          }
+        />
+        <meta
+          name="keywords"
+          content={keywords ?? 'E Education, children, study, math'}
+        />
       </Head>
 
       <Header />
@@ -36,13 +46,6 @@ const Layout: React.FC<Iprops> = ({
       {router.pathname === '/' && <Footer />}
     </div>
   );
-};
-
-Layout.defaultProps = {
-  title: 'Albert | e Education ',
-  description:
-    'Albert is a digital maths teacher for children. Developed to teach maths in a smart, fun and educational way',
-  keywords: 'E Education, children, study, math'
 };
 
 export default Layout;
